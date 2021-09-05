@@ -59,7 +59,8 @@
      "@typescript-eslint/no-empty-interface": "off",
      "import/no-extraneous-dependencies": "off",
      "@typescript-eslint/no-empty-function": "off",
-     "react/prop-types": "off"
+     "react/prop-types": "off",
+     "camelcase": "off"
     },
     "settings": {
       "import/resolver": {
