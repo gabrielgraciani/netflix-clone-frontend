@@ -47,7 +47,11 @@
           "tsx": "never"
         }
      ],
-     "prettier/prettier": "error",
+     "prettier/prettier": ["error",
+        {
+          "endOfLine": "auto"
+        }
+     ],
      "import/prefer-default-export": "off",
      "react/jsx-props-no-spreading": "off",
      "no-shadow": "off",
