@@ -9,6 +9,8 @@
     "lint": "next lint --max-warnings=0",
     "test": "jest --watch",
     "test:coverage": "jest --coverage",
+    "test:badges": "yarn test:coverage  && jest-coverage-badges",
+    "test:generate-badges": "yarn jest-coverage-badges --input \"./coverage/coverage-summary.json\" --output \"./badges\"",
     "postinstall": "yarn husky install"
   },
   "dependencies": {
@@ -51,7 +53,7 @@
     }
   },
   "lint-staged": {
-    "**/*.{js,jsx,ts,tsx}": [
+    "**/*.{ts,tsx}": [
       "yarn eslint --max-warnings=0",
       "yarn test --watchAll=false --findRelatedTests --bail"
     ]
