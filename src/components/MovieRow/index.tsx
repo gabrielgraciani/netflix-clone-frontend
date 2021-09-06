@@ -37,14 +37,20 @@ export function MovieRow({ title, movies }: MovieRowProps): JSX.Element {
     <Container
       onMouseEnter={() => setIsShowingArrows(true)}
       onMouseLeave={() => setIsShowingArrows(false)}
+      data-testid="MovieRow"
     >
       <Title>{title}</Title>
-      <ArrowLeftContainer onClick={handleLeftArrow} isShowing={isShowingArrows}>
+      <ArrowLeftContainer
+        onClick={handleLeftArrow}
+        isShowing={isShowingArrows}
+        data-testid="ArrowLeft"
+      >
         <MdNavigateBefore style={{ fontSize: 50 }} />
       </ArrowLeftContainer>
       <ArrowRightContainer
         onClick={handleRightArrow}
         isShowing={isShowingArrows}
+        data-testid="ArrowRight"
       >
         <MdNavigateNext style={{ fontSize: 50 }} />
       </ArrowRightContainer>
@@ -55,6 +61,7 @@ export function MovieRow({ title, movies }: MovieRowProps): JSX.Element {
             marginLeft: scrollX,
             width: movies.results?.length * 150,
           }}
+          data-testid="MovieRowList"
         >
           {movies.results.length > 0 &&
             movies.results.map(item => (

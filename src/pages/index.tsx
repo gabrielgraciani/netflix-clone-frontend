@@ -3,15 +3,9 @@ import { FeatureMovie } from '../components/FeatureMovie';
 import { Header } from '../components/Header';
 import { MovieRow } from '../components/MovieRow';
 import { MovieProps } from '../interfaces/Movie';
+import { MovieListProps } from '../interfaces/MovieList';
 import { fetchMovieInfo } from '../services/requests/MovieInfo';
 import { fetchMoviesList } from '../services/requests/MoviesList';
-
-interface MovieListProps {
-  title: string;
-  movies: {
-    results: MovieProps[];
-  };
-}
 
 export default function Home(): JSX.Element {
   const [moviesList, setMoviesList] = useState<MovieListProps[]>([]);
@@ -20,7 +14,7 @@ export default function Home(): JSX.Element {
   );
 
   useEffect(() => {
-    const fetchOriginalMovies = async () => {
+    async function fetchOriginalMovies() {
       const moviesListResponse = await fetchMoviesList();
       setMoviesList(moviesListResponse);
 
@@ -33,7 +27,7 @@ export default function Home(): JSX.Element {
       const chosen = originals[0].movies.results[randomChosen];
       const chosenInfo = await fetchMovieInfo({ movieId: chosen.id });
       setFeatureMovie(chosenInfo);
-    };
+    }
 
     fetchOriginalMovies();
   }, []);
