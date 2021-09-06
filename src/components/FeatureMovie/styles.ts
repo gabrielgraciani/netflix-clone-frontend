@@ -28,7 +28,7 @@ const FeatureHorizontal = styled.div`
   padding: 7rem 0 15rem 3rem;
 `;
 
-const FeatureHorizontalName = styled.div`
+const FeatureHorizontalName = styled.h1`
   font-size: 6rem;
   font-weight: bold;
   color: ${({ theme }) => theme.colors.white};
