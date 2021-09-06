@@ -1,11 +1,20 @@
 import { useEffect, useState } from 'react';
 import { FeatureMovie } from '../components/FeatureMovie';
 import { Header } from '../components/Header';
+import { MovieRow } from '../components/MovieRow';
 import { MovieProps } from '../interfaces/Movie';
 import { fetchMovieInfo } from '../services/requests/MovieInfo';
 import { fetchMoviesList } from '../services/requests/MoviesList';
 
+interface MovieListProps {
+  title: string;
+  movies: {
+    results: MovieProps[];
+  };
+}
+
 export default function Home(): JSX.Element {
+  const [moviesList, setMoviesList] = useState<MovieListProps[]>([]);
   const [featureMovie, setFeatureMovie] = useState<MovieProps | undefined>(
     undefined,
   );
@@ -13,6 +22,7 @@ export default function Home(): JSX.Element {
   useEffect(() => {
     const fetchOriginalMovies = async () => {
       const moviesListResponse = await fetchMoviesList();
+      setMoviesList(moviesListResponse);
 
       const originals = moviesListResponse.filter(i => i.slug === 'originals');
 
@@ -32,6 +42,10 @@ export default function Home(): JSX.Element {
     <div style={{ width: '100%' }}>
       <Header />
       {featureMovie && <FeatureMovie movie={featureMovie} />}
+
+      {moviesList.map(item => (
+        <MovieRow key={item.title} title={item.title} movies={item.movies} />
+      ))}
     </div>
   );
 }

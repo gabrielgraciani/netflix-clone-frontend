@@ -1,7 +1,7 @@
 import styled from 'styled-components';
 
 const Container = styled.section`
-  height: 100vh;
+  height: 90vh;
 `;
 
 const FeatureVertical = styled.div`
@@ -25,9 +25,7 @@ const FeatureHorizontal = styled.div`
   display: flex;
   flex-direction: column;
   justify-content: center;
-  padding-left: 3rem;
-  padding-bottom: 15rem;
-  padding-top: 7rem;
+  padding: 7rem 0 15rem 3rem;
 `;
 
 const FeatureHorizontalName = styled.div`

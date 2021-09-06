@@ -9,4 +9,6 @@ export interface MovieProps {
   vote_average: number;
   number_of_seasons: number;
   id: number;
+  original_title: string;
+  poster_path: string;
 }
